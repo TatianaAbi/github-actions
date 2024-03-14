@@ -1,0 +1,24 @@
+name: triggers
+on:
+  push:
+    branches:
+      - main 
+      - aprendiendo-github-actions
+  workflow_dispatch:
+      inputs:
+         nombre:
+           description: 'nombre de usuario'
+           required: true
+           default: juan
+           type: string
+  issues:
+      types:
+      - labeled
+
+jobs: 
+    hola-mundo-manual:
+       runs-on: ubuntu-latest
+       steps:
+          - name: run 
+            run: echo ${{ inputs.nombre }} es mayor de edad 
+         
