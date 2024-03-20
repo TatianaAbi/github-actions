@@ -1,0 +1,36 @@
+name: expresiones
+run-name: usando expresiones
+on: 
+  workflow_dispatch:
+     inputs:
+         edad:
+             description: "edad del usuario"
+             required: true
+             type: integer
+             
+         nombre:
+             required: true
+             type: string
+             description: "nombre del usuario"
+jobs:
+     mayor:
+       if: ${{ inputs.edad >= 18}}
+       runs-on: ubuntu-latest
+       steps:
+            - name: message 1
+              run: echo el usuario ${{ inputs.nombre }} es mayor de edad
+            
+     menor: 
+       if: ${{ inputs.user < 18}}
+       runs-on: ubuntu-latest
+       steps:
+            - name: message 2
+              run: echo  el usuario ${{ inputs.nombre }} es menor de edad
+     secret: 
+       if: ${{ inputs.user == 2000}}
+       runs-on: ubuntu-latest
+       steps:
+            - name: message 2
+              run: echo  el usuario ${{ inputs.nombre }}  es secreto
+             
+             
